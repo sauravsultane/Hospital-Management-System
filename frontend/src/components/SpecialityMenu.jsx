@@ -14,7 +14,7 @@ return (
             </p>
             <div className='flex sm:justify-center gap-4 pt-5 w-full overflow-scroll '>
                 {specialityData.map((item,index)=>(
-                    <Link className='flex flex-col items-center text-xs cursor-pointer flex-shrink-0 hover:translate-y-[-10px] transition-all duration-300' key={index} to={`/doctors/${item.speciality}`}>
+                    <Link onClick={()=>scrollTo(0,0)} className='flex flex-col items-center text-xs cursor-pointer flex-shrink-0 hover:translate-y-[-10px] transition-all duration-300' key={index} to={`/doctors/${item.speciality}`}>
                         <img className='w-16 sm:w-24 mb-2' src={item.image} alt="" />
                         <p className='flex justify-center items-center'>{item.speciality}</p>
                     </Link>

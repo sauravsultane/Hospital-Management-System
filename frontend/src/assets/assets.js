@@ -296,4 +296,32 @@ export const doctors = [
             line2: 'Circle, Ring Road, London'
         }
     },
+    {
+        _id: 'doc16',
+        name: 'Dr. Richard James',
+        image: doc1,
+        speciality: 'General physician',
+        degree: 'MBBS',
+        experience: '4 Years',
+        about: 'Dr. Davis has a strong commitment to delivering comprehensive medical care, focusing on preventive medicine, early diagnosis, and effective treatment strategies. Dr. Davis has a strong commitment to delivering comprehensive medical care, focusing on preventive medicine, early diagnosis, and effective treatment strategies.',
+        fees: 50,
+        address: {
+            line1: '17th Cross, Richmond',
+            line2: 'Circle, Ring Road, London'
+        }
+    },
+    {
+        _id: 'doc17',
+        name: 'Dr. Emily Larson',
+        image: doc2,
+        speciality: 'Gynecologist',
+        degree: 'MBBS',
+        experience: '3 Years',
+        about: 'Dr. Davis has a strong commitment to delivering comprehensive medical care, focusing on preventive medicine, early diagnosis, and effective treatment strategies. Dr. Davis has a strong commitment to delivering comprehensive medical care, focusing on preventive medicine, early diagnosis, and effective treatment strategies.',
+        fees: 60,
+        address: {
+            line1: '27th Cross, Richmond',
+            line2: 'Circle, Ring Road, London'
+        }
+    }
 ]
