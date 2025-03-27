@@ -12,7 +12,6 @@ const Home = () => {
       <SpecialityMenu/>
       <TopDoctors/>
       <Banner/>
-      <Footer/>
     </div>
   )
 }
