@@ -25,5 +25,8 @@ A **React & Tailwind CSS** project for booking doctor appointments online. This 
 
 ### 1️⃣ Clone the Repository  
 ```sh
-git clone https://github.com/yourusername/hospital-appointment.git
-cd hospital-appointment
+git clone https://github.com/sauravsultane/Hospital-Management-System.git
+cd Hospital-Management-System
+npm frontend
+npm npm run dev
+
