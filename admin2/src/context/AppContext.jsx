@@ -2,13 +2,14 @@ import React, { createContext } from 'react';
 
 export const AppContext =createContext();
 
-const AppContextProvider = ()=>{
+const AppContextProvider = (props)=>{
     const value={
 
     }
     return(
         <AppContext.Provider value={value}>
             {props.children}
+        
         </AppContext.Provider>
     )
 }

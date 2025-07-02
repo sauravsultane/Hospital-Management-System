@@ -26,26 +26,30 @@ const Login = () => {
   const onSubmitHandler = async (event) => {
     event.preventDefault();
     try {
-      if (state === 'Admin') {
-        const { data } = await axios.post(backendUrl+'/api/admin/login', { email, password });
-        console.log("API response:", data);
-        if (data.success) {
-          console.log("Token:", data.token);
+      // const { data } = await axios.post(backendUrl + '/api/admin/login', { email, password });
+      // console.log("API response:", data);
+
+      if(state==='Admin'){
+        const { data } = await axios.post(backendUrl + '/api/admin/login', { email, password });
+        if(data.sucess){
           localStorage.setItem('aToken', data.token);
           setAToken(data.token);
         }else{
-          toast.error(data.message)
-        }
-      } else {
-        const { data } = await axios.post(backendUrl+'/doctor/login', { email, password });
-        if (data.success) {
-          console.log(data.token);      
+          toast.error(data.message);
         }
       }
+      // if (data.success) {
+      //   localStorage.setItem('aToken', data.token);
+      //   setAToken(data.token);
+      //   toast.success("Admin Login Successfully");
+      // } else {
+      //   toast.error(data.message);
+      // }
     } catch (err) {
       console.error("Error during login:", err);
+      toast.error("Login failed. Please try again.");
     }
-  }
+  };
 
   return (
     <form onSubmit={onSubmitHandler} className="min-h-[80vh] flex items-center">
