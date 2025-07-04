@@ -2,7 +2,9 @@ import express from 'express';
 
 import {addDoctor , loginAdmin} from '../controllers/adminController.js';
 import upload from '../middlewares/multer.js';
-import { authAdmin } from '../middlewares/AuthAdmin.js';
+// import { authAdmin } from '../middlewares/AuthAdmin.js';
+import authAdmin from '../middlewares/AuthAdmin.js';
+// import authAdmin from '../middlewares/AuthAdmin.js'
 
 const adminRouter = express.Router();
 

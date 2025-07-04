@@ -6,12 +6,12 @@ import jwt from 'jsonwebtoken';
 
 export const addDoctor = async (req, res) => {
     try {
-      const { name, email, password, speciality, exprience, degree, about, fees, address } = req.body;
+      const { name, email, password, speciality, experience, degree, about, fees, address } = req.body;
       const imageFile = req.file;
   
-      console.log({ name, email, password, speciality, exprience, degree, about, fees, address }, imageFile);
+      console.log({ name, email, password, speciality, experience, degree, about, fees, address }, imageFile);
 
-      if(!name || !email || !password || !speciality || !exprience || !degree || !about || !fees || !address) {
+      if(!name || !email || !password || !speciality || !experience || !degree || !about || !fees || !address) {
         return res.json({ sucess:false, message: "All fields are required" });
       }
       
@@ -19,7 +19,7 @@ export const addDoctor = async (req, res) => {
         return res.json({ sucess:false, message: "Please Enter the valid email" });
       }
 
-      if(password.length<8){
+      if(password.length<6){
         return res.json({sucess:false,message:"Enter Strong Password"})
       }
 
@@ -38,12 +38,12 @@ export const addDoctor = async (req, res) => {
         image:imageUrl,
         password:hashedPassword,
         speciality,
-        exprience,
+        experience,
         degree,
         about,
         fees,
         address:JSON.parse(address),
-        date:Data.now()
+        date:Date.now()
       }
 
       const newDoctor = new doctorModel(doctorData);
@@ -61,23 +61,23 @@ export const addDoctor = async (req, res) => {
   
 
   //API for admin login
+const loginAdmin = async (req, res) => {
+    try {
 
-  const loginAdmin = async (req,res)=>{
-    try{
-        const{email, password}= req.body
-        if(email=== process.env.ADMIN_EMAIL && password === process.env.ADMIN_PASSWORD){
+        const { email, password } = req.body
 
-          const token = jwt.sign(email+password, process.env.JWT_SECRET)
-
-            res.status(200).json({sucess:true, message:"Admin Login Sucessfully",token})
-        }else{
-          res.json({sucess:false, message:"Invalid Email or Password"})
+        if (email === process.env.ADMIN_EMAIL && password === process.env.ADMIN_PASSWORD) {
+            const token = jwt.sign(email + password, process.env.JWT_SECRET)
+            res.json({ success: true, token })
+        } else {
+            res.json({ success: false, message: "Invalid credentials" })
         }
 
-    }catch(error){
-      console.error(error);
-      res.status(500).json({ sucess:false ,message: "Server Error", error: error.message });
+    } catch (error) {
+        console.log(error)
+        res.json({ success: false, message: error.message })
     }
-  } 
+
+}
 
   export{loginAdmin};

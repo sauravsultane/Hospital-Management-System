@@ -29,7 +29,7 @@ const AddDoctor = () => {
 
       const formData = new FormData();
 
-      formData.append("docImg", docImg);
+      formData.append("image", docImg);
       formData.append("name", name);
       formData.append("email", email);
       formData.append("password", password);
@@ -37,21 +37,41 @@ const AddDoctor = () => {
       formData.append("fees", Number(fees));
       formData.append("speciality", speciality);
       formData.append("degree", degree);
-      formData.append("address1", JSON.stringify({line1:address1, line2:address2}));
-      
+      formData.append(
+        "address",
+        JSON.stringify({ line1: address1, line2: address2 })
+      );
+
       formData.append("about", about);
 
-      formData.forEach((value, key)=>{
-        console.log(`${key} : ${value}`) 
-      })
-      const [data] = await axios.post(backendUrl + 'admin/add-doctor', formData,{headers:{aToken}})
+      formData.forEach((value, key) => {
+        console.log(`${key} : ${value}`);
+      });
+      const { data } = await axios.post(
+        backendUrl + "/api/admin/add-doctor",
+        formData,
+        { headers: { aToken } }
+      );
 
-      if(data.sucess){
-        toast.sucess("Doctor added successfully");
-      }else{
-        toast.error(data.message || "Failed to add doctor");
+      if (data.success) {
+        toast.success(data.message);
+        setDocImg(false);
+        setName("");
+        setPassword("");
+        setEmail("");
+        setExperience("1 Year");
+        setAddress1("");
+        setAddress2("");
+        setDegree("");
+        setAbout("");
+        setFees("");
+      } else {
+        toast.error(data.message);
       }
-    } catch (error) {}
+    } catch (error) {
+      toast.error(error.message);
+      console.log(error);
+    }
   };
 
   return (
@@ -124,11 +144,15 @@ const AddDoctor = () => {
               required
               className="w-full border rounded-lg px-3 py-2 bg-white outline-none focus:ring-2 focus:ring-blue-500"
             >
-              {[...Array(10)].map((_, i) => (
-                <option key={i} value={`${i + 1} Year`}>{`${
-                  i + 1
-                } Year`}</option>
-              ))}
+              <option value="1 Year">1 Year</option>
+              <option value="2 Year">2 Years</option>
+              <option value="3 Year">3 Years</option>
+              <option value="4 Year">4 Years</option>
+              <option value="5 Year">5 Years</option>
+              <option value="6 Year">6 Years</option>
+              <option value="8 Year">8 Years</option>
+              <option value="9 Year">9 Years</option>
+              <option value="10 Year">10 Years</option>
             </select>
           </div>
 
