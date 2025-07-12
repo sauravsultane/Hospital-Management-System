@@ -54,6 +54,7 @@ const AdminContextProvider = (props) => {
             toast.error(error.message)
         }
     }
+    
 
 
     // Getting all appointment data from Database using API
