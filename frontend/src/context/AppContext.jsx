@@ -8,8 +8,7 @@ export const AppContext = createContext();
 
 const AppContextProvider = (props) => {
   const currencySymbol = "$";
-  const backendUrl =
-    import.meta.env.VITE_BACKEND_URL || "http://localhost:4000";
+  const backendUrl ="https://hospital-management-system-backend-uhuk.onrender.com";
 
   const [doctors, setDoctors] = useState([]);
   const [token, setToken] = useState(
