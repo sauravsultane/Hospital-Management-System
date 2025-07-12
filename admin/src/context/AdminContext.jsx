@@ -8,7 +8,7 @@ export const AdminContext = createContext()
 const AdminContextProvider = (props) => {
 
     
-    const backendUrl ="http://localhost:4000"||import.meta.env.VITE_BACKEND_URL;
+    const backendUrl ="https://hospital-management-system-backend-uhuk.onrender.com";
 
     console.log('Backend URL:', backendUrl);
 
