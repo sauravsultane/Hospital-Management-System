@@ -31,7 +31,7 @@ const Login = () => {
 
       if(state==='Admin'){
         const { data } = await axios.post(backendUrl + '/api/admin/login', { email, password });
-        if(data.sucess){
+        if(data.success){
           localStorage.setItem('aToken', data.token);
           setAToken(data.token);
         }else{
@@ -66,7 +66,7 @@ const Login = () => {
           <p>Password</p>
           <input autoComplete="off" onChange={(e)=>setPassword(e.target.value)} value={password} className="border border-[#dadada] rounded w-full p-2 mt-1" type="password" required />
         </div>
-        <button className="bg-[#5f6fff] text-white w-full py-2 rounded-md text-base cursor-pointer">Login</button>
+        <button type="submit" className="bg-[#5f6fff] text-white w-full py-2 rounded-md text-base cursor-pointer">Login</button>
 
         { 
           state === "Admin" ? 
